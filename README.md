@@ -83,7 +83,7 @@ Ollama-server-with-Docker-and-FastAPI/
 │   ├── requirements.txt   # Python dependencies for FastAPI
 ├── ollama/                # FastAPI application code
 │   ├── Dockerfile         # Dockerfile for building ollama image
-│   ├── pull-llama3.sh     # shell script to pull llama3 model
+│   ├── pull-model.sh      # shell script to pull llama3 model
 ├── compose.yml            # Docker Compose configuration file
 └── README.md              # Project documentation (this file)
 ```
