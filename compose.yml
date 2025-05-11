@@ -10,12 +10,19 @@ services:
   ollama:
     build: ollama
     ports:
-      - 11434:11434 
+      - 11435:11434 
     volumes:
       - ./ollama:/app
     networks:
       - ollama-net
-    entrypoint: ["/usr/bin/bash", "pull-llama3.sh"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    entrypoint: ["/usr/bin/bash", "pull-model.sh"]
 
 networks:
   ollama-net:
