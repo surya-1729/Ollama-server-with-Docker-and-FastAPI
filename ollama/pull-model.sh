@@ -1,11 +1,16 @@
-# run the ollama asychronously
+# Run the ollama asynchronously
 ./bin/ollama serve & 
 
+# Store the PID of the last background process (Ollama server)
 pid=$!
 
-sleep 5
+# Add readiness check
+until ollama ls >/dev/null 2>&1; do
+    sleep 1
+done
 
-echo"pulling llama3 model"
+# Pull model of choice
+echo "pulling gemma3:1b model"
 ollama pull gemma3:1b
 
 wait $pid
